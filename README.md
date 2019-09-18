@@ -1,8 +1,24 @@
-# EPACTS - Efficient and Parallelizable Association Container Toolbox
+# EPACTS - Efficient and Parallelizable Association Container Toolbox for Genetic Analysis of Population-based Association Studies (23rd to 27th September)
 
 ### What is EPACTS?
 
 EPACTS is a versatile software pipeline to perform various statistical tests for identifying genome-wide association from sequence data through a user-friendly interface, both to scientific analysts and to method developer.s
+
+### Docker container usage of this package 
+
+mkdir $HOME/DATA
+
+docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix:rw --privileged -e DISPLAY=unix$DISPLAY -v $HOME/DATA:/home/training/DATA --device /dev/dri --privileged --name epactsgeneanalysis ebitraining/epactsgeneanalysis
+
+#### To resume using an container:
+
+docker exec -it epactsgeneanalysis /bin/bash
+
+#### To build the container:
+
+docker build -f ./Dockerfile -t epactsgeneanalysis .
+docker tag epactsgeneanalysis ebitraining/epactsgeneanalysis:latest
+docker push ebitraining/epactsgeneanalysis:latest
 
 ### Downloading and Installing EPACTS
 
