@@ -9,7 +9,7 @@ EPACTS is a versatile software pipeline to perform various statistical tests for
 ```Shell
 mkdir $HOME/DATA
 
-docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix:rw --privileged -e DISPLAY=unix$DISPLAY -v $HOME/DATA:/home/training/DATA --device /dev/dri --privileged --name epactsgeneanalysis ebitraining/epactsgeneanalysis
+docker run -it -d --rm --privileged -v $HOME/DATA:/home/training/DATA --device /dev/dri --privileged --name epactsgeneanalysis ebitraining/epactsgeneanalysis
 ```
 
 #### To resume using an container:
