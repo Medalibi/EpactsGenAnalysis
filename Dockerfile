@@ -80,7 +80,7 @@ RUN cmake -DCMAKE_TOOLCHAIN_FILE=../cget/cget/cget.cmake -DCMAKE_BUILD_TYPE=Rele
 
 ## Create user training
 ########
-RUN useradd -r -s /bin/bash -U -m -d /home/training -p '' training:training
+RUN useradd -r -s /bin/bash -U -m -d /home/training -p '' training
 
 # Setup the user environment
 ########
