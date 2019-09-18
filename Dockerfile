@@ -23,7 +23,7 @@ RUN echo "deb http://cloud.r-project.org/bin/linux/ubuntu bionic/" >> /etc/apt/s
 RUN apt update; apt install -y \
         build-essential cmake curl ghostscript git gnuplot groff help2man lsb-release python python-pip r-base rpm \
         zlib1g-dev libbz2-dev libncurses5-dev libncursesw5-dev liblzma-dev gcc make libcurl4-openssl-dev build-essential \
-        ca-certificates automake pkg-config sudo wget git autoconf zlibc nano libedit2 libssl-dev \
+        ca-certificates automake pkg-config sudo wget git autoconf zlibc nano libedit2 libssl-dev libgsl-dev \
         r-base r-base-core r-recommended \
         && pip install cget
 
