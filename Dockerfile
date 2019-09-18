@@ -17,10 +17,10 @@ RUN apt-get update \
     && apt-get install -y gnupg gdebi expect \
     && locale-gen en_GB.UTF-8
 
-RUN echo "deb http://cloud.r-project.org/bin/linux/ubuntu bionic/" >> /etc/apt/sources.list \
+RUN echo "deb http://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" >> /etc/apt/sources.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 
-RUN apt update; apt install -y \
+RUN apt-get update; apt-get install -y \
         build-essential cmake curl ghostscript git gnuplot groff help2man lsb-release python python-pip r-base rpm \
         zlib1g-dev libbz2-dev libncurses5-dev libncursesw5-dev liblzma-dev gcc make libcurl4-openssl-dev build-essential \
         ca-certificates automake pkg-config sudo wget git autoconf zlibc nano libedit2 libssl-dev libgsl-dev \
@@ -86,7 +86,10 @@ RUN useradd -r -s /bin/bash -U -m -d /home/training -p '' training:training
 ########
 ENV HOME /home/training
 RUN usermod -aG sudo,audio,video training \
-    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
+    && mkdir /home/training/DATA \
+    && chown -R training:training /home/training/DATA \
+    && chmod 777 -R /home/training/DATA
 
 WORKDIR $HOME
 USER training
