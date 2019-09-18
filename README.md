@@ -6,19 +6,25 @@ EPACTS is a versatile software pipeline to perform various statistical tests for
 
 ### Docker container usage of this package 
 
+```Shell
 mkdir $HOME/DATA
 
 docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix:rw --privileged -e DISPLAY=unix$DISPLAY -v $HOME/DATA:/home/training/DATA --device /dev/dri --privileged --name epactsgeneanalysis ebitraining/epactsgeneanalysis
+```
 
 #### To resume using an container:
 
+```Shell
 docker exec -it epactsgeneanalysis /bin/bash
+```
 
 #### To build the container:
 
+```Shell
 docker build -f ./Dockerfile -t epactsgeneanalysis .
 docker tag epactsgeneanalysis ebitraining/epactsgeneanalysis:latest
 docker push ebitraining/epactsgeneanalysis:latest
+```
 
 ### Downloading and Installing EPACTS
 
