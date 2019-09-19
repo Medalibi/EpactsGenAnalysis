@@ -17,7 +17,7 @@ RUN apt-get update \
     && apt-get install -y gnupg gdebi expect \
     && locale-gen en_GB.UTF-8
 
-RUN echo "deb http://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" >> /etc/apt/sources.list \
+RUN echo "deb http://cloud.r-project.org/bin/linux/ubuntu bionic/" >> /etc/apt/sources.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 
 RUN apt-get update; apt-get install -y \
@@ -29,8 +29,8 @@ RUN apt-get update; apt-get install -y \
 
 # Set default CRAN repo
 ########
-COPY ./installer.R /usr/local/installer.R
-RUN Rscript /usr/local/installer.R
+#COPY ./installer.R /usr/local/installer.R
+#RUN Rscript /usr/local/installer.R
 RUN echo 'options(repos = c(CRAN = "https://cran.rstudio.com/"), download.file.method = "libcurl")' >> /etc/R/Rprofile.site \
     && echo 'source("/etc/R/Rprofile.site")' >> /etc/littler.r \
     && ln -s /usr/share/doc/littler/examples/install.r /usr/local/bin/install.r \
